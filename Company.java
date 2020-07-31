@@ -1,56 +1,47 @@
-public class Company
-    {
+public class Company {
         String name;
         int fot;
-        Employee employee1;
-        Employee employee2;
-        Employee employee3;
-        double msal;
+        int empcount;
+        Employee[] employee;
+        private int MaxSalary;
 
-        public Company(String name, int fot) {
+        //Создаем компанию с названием и бюджетом на зарплату, фиксируем количество сотрудников
+        public Company(String name, int fot, int empcount) {
             this.name = name;
             this.fot=fot;
-            System.out.println("Created new organisation: "+name+" with fot "+fot);
+            this.empcount=empcount;
+            System.out.println("Created new organisation: "+name+" with fot "+fot+", Employees count "+(empcount));
         }
 
-        public void setEmployee1(Employee employee1)
+        //Создать объекты массива employee
+        public void createVacan()
         {
-            this.employee1 = employee1;
-            System.out.println("Add new employee #1: "+employee1.name+" as "+employee1.designation+". Salary: "+employee1.salary);
-
+             for(int i=0;i<empcount;i++){
+                this.employee[i]= new Employee();
+                System.out.println("Otkrita vakansia #"+i);
+             }
         }
-        public void setEmployee2(Employee employee2)
-        {
-            this.employee2 = employee2;
-            System.out.println("Add new employee #2: "+employee2.name+" as "+employee2.designation+". Salary: "+employee2.salary);
 
+        //Закрепляем сотрудника за компанией
+        public void setEmployee(Employee[] employee)
+        {int i = 0;
+            this.employee = employee;
+            System.out.println(this.name+" add new employee"+": "+employee[i].name+" as "+employee[i].getDesignation()+". Salary: "+employee[i].getSalary());
         }
-        public void setEmployee3(Employee employee3)
-        {
-            this.employee3 = employee3;
-            System.out.println("Add new employee #3: "+employee3.name+" as "+employee3.designation+". Salary: "+employee3.salary);
 
-        }
-        public double evalMsal()
-        {
-          msal=(employee1.salary+employee2.salary+employee3.salary)/3;
-          System.out.println("Middle salary in Company is "+msal+" $");
-          return msal;
+        //Выводим максимальную зарплату
+        public int getMaxSal(){
+        return MaxSalary;
+    }
+
+        //Считаем среднюю зарплату
+        public double getAvrSal() {
+            int sum=0;
+            for(int i=0;i<empcount;){
+                sum = sum + this.employee[i].getSalary();
+                i++;
+                System.out.println(sum);
+            }
+          return (float) sum/(empcount);
         };
-        public static void main(String args[]){
-            Company org = new Company("British Petrolium", 100000);
-            Employee victor = new Employee("Victor","Surskov",28,"man");
-            Employee ivan = new Employee ("Ivan","Antamanov",27,"man");
-            Employee jamal = new Employee ("Jamal",null,21,"man");
-            victor.setDesignation("Newbie");
-            victor.setSalary(1000);
-            ivan.setWorkplace(5000,"Coder-Shmoder");
-            jamal.setWorkplace(50000,"Hach-Trukach");
-            org.setEmployee1(victor);
-            org.setEmployee2(ivan);
-            org.setEmployee3(jamal);
-            org.evalMsal();
-        }
-
-
     }
