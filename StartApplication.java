@@ -1,27 +1,27 @@
 public class StartApplication {
-Company org;
+
     public static void main(String args[]){
 
+        //Создаю компанию со значениями Имя ФОТ и количество сотрудников
         Company org = new Company("British Petrolium", 100000,3);
+        Company org1 = new Company("Газпром", 50000,2);
 
-        Employee[] employee = new Employee[org.empcount];
-        for(int i=0;i< employee.length;i++){
-            employee[i]= new Employee();
-            System.out.println("Otkrita vakansia #"+i);
-        }
-        //org.createVacan();
+        //Cоздаем массив сотрудников вместе с объектами (Открываем вакансии)
+        org.createVacan();
+        org1.createVacan();
 
-        employee[0].createEmployee("Victor","Surskov",28,"man");
-        employee[1].createEmployee("Ivan","Antamanov",27,"man");
-        employee[2].createEmployee("Jamal","Jamalovich",21,"man");
+        //Присваивааем пустым объектам массива сотрудников значения Имя Фамилия Возраст Пол (Набираем соискателей)
+        org.employee[0].createEmployee("Victor","Surskov",28,"man");
+        org.employee[1].createEmployee("Ivan","Antamanov",27,"man");
+        org.employee[2].createEmployee("Jamal","Jamalovich",21,"man");
 
-        employee[0].setDesignation("Newbie");
-        employee[0].setSalary(1000);
+        //Присваивааем пустым объектам массива сотрудников значения Зарплата Должность (Устраиваем на работу)
+        org.employee[0].setWorkplace(1000,"Newbie");
+        org.employee[1].setWorkplace(5000,"Coder-Shmoder");
+        org.employee[2].setWorkplace(50000,"Hach-Trukach");
 
-        employee[1].setWorkplace(5000,"Coder-Shmoder");
-        employee[2].setWorkplace(50000,"Hach-Trukach");
-
-        System.out.println("Average salary in Company is "+org.getAvrSal()+" $");
-        System.out.println("Max salary in Company is "+org.getMaxSal()+" $");
+        //Выводим среднюю зарплату и максимальную зарплаты
+        System.out.println("Максимальная зарплата в компании "+org.name+" составляет "+org.getMaxSal());
+        System.out.println("Средняя зарплата в компании "+org.name+" составляет "+org.getAvrSal());
     }
 }

@@ -3,7 +3,6 @@ public class Company {
         int fot;
         int empcount;
         Employee[] employee;
-        private int MaxSalary;
 
         //Создаем компанию с названием и бюджетом на зарплату, фиксируем количество сотрудников
         public Company(String name, int fot, int empcount) {
@@ -13,35 +12,38 @@ public class Company {
             System.out.println("Created new organisation: "+name+" with fot "+fot+", Employees count "+(empcount));
         }
 
-        //Создать объекты массива employee
+        //Создать массив и объекты массива employee (Создаем вакантные места)
         public void createVacan()
         {
-             for(int i=0;i<empcount;i++){
-                this.employee[i]= new Employee();
-                System.out.println("Otkrita vakansia #"+i);
+            this.employee = new Employee[this.empcount];
+             for(int i=0;i<empcount;i++) {
+                 employee[i] = new Employee();
+                 System.out.println("В компании "+this.name+" открыта вакансия #" + (i+1));
              }
         }
 
         //Закрепляем сотрудника за компанией
-        public void setEmployee(Employee[] employee)
-        {int i = 0;
-            this.employee = employee;
-            System.out.println(this.name+" add new employee"+": "+employee[i].name+" as "+employee[i].getDesignation()+". Salary: "+employee[i].getSalary());
+       public void setEmployee(Employee employee)
+        {   int i=0;
+            this.employee[i] = employee;
+            System.out.println(this.name+" add new employee"+": "+this.employee[i].name+" as "+this.employee[i].getDesignation()+". Salary: "+this.employee[i].getSalary());
         }
 
-        //Выводим максимальную зарплату
+        //Считаем максимальную зарплату
         public int getMaxSal(){
-        return MaxSalary;
+            int MaxSalary=0;
+            for(int i=0;i<this.empcount;i++){
+                if (MaxSalary<this.employee[i].salary) {MaxSalary=this.employee[i].salary;}
+            }
+            return (MaxSalary);
     }
 
         //Считаем среднюю зарплату
         public double getAvrSal() {
             int sum=0;
-            for(int i=0;i<empcount;){
-                sum = sum + this.employee[i].getSalary();
-                i++;
-                System.out.println(sum);
+            for(int i=0;i<this.employee.length;i++){
+                sum = sum + this.employee[i].salary;
             }
-          return (float) sum/(empcount);
+          return (sum/(this.employee.length));
         };
     }

@@ -3,7 +3,7 @@ public class Employee {
     String surname;
     int age;
     String gender;
-    private int salary;
+    int salary;
     private String designation;
 
     //Создаем сотрудника (имя, фамилия, возраст, пол)
@@ -40,4 +40,5 @@ public class Employee {
         return salary;
     }
     public String getDesignation() {return designation;}
+
 }
