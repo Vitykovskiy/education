@@ -13,32 +13,39 @@ public class Employee {
         this.surname=surname;
         this.age=age;
         this.gender = gender;
-        System.out.println("Created object "+name+" "+surname+" ("+gender+", "+age+" years)");
+        //System.out.println("Created object "+name+" "+surname+" ("+gender+", "+age+" years)");
     }
     //устанавливаем зарплату
     public void setSalary(int salary)
     {
         this.salary = salary;
         this.designation=designation;
-        System.out.println(name+"'s' salary is "+salary);
+        System.out.println(this.name+" "+this.surname+" имеет запрлату "+salary);
     }
     //устанавливаем должность
     public void setDesignation(String designation)
     {
         this.designation=designation;
-        System.out.println(this.name+"'s' designation is "+this.designation);
+        System.out.println(this.name+" "+this.surname+" имеет должность "+this.designation);
     }
     //устанавливаем зарплату и должность
     public void setWorkplace(int salary, String designation)
     {
         this.salary = salary;
         this.designation=designation;
-        System.out.println(name+"'s' designation is "+designation+" with salary "+salary);
+        System.out.println(this.name+" "+this.surname+" имеет должность "+designation+" с зарплатой "+salary);
     }
+
     //Геттеры зарплаты и должности
     public int getSalary(){
         return salary;
     }
     public String getDesignation() {return designation;}
 
+    public boolean isEmpty() {
+        boolean a;
+        if (this.name==null) {a=true;} else {a=false;}
+        return a;
+    }
 }
+

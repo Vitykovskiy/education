@@ -1,3 +1,4 @@
+import java.util.UUID;
 public class Company {
         String name;
         int fot;
@@ -9,7 +10,7 @@ public class Company {
             this.name = name;
             this.fot=fot;
             this.empcount=empcount;
-            System.out.println("Created new organisation: "+name+" with fot "+fot+", Employees count "+(empcount));
+            System.out.println("Создана организация: "+name+" с фондом оплаты труда "+fot+", Количество сотрудников "+(empcount));
         }
 
         //Создать массив и объекты массива employee (Создаем вакантные места)
@@ -18,16 +19,13 @@ public class Company {
             this.employee = new Employee[this.empcount];
              for(int i=0;i<empcount;i++) {
                  employee[i] = new Employee();
-                 System.out.println("В компании "+this.name+" открыта вакансия #" + (i+1));
+
              }
+           if (this.empcount!=0){
+            System.out.println("В компании "+this.name+" открыто " + (this.empcount)+" вакансий");}
+           else{System.out.println("В компании "+this.name+" нет открытых вакансий");}
         }
 
-        //Закрепляем сотрудника за компанией
-       public void setEmployee(Employee employee)
-        {   int i=0;
-            this.employee[i] = employee;
-            System.out.println(this.name+" add new employee"+": "+this.employee[i].name+" as "+this.employee[i].getDesignation()+". Salary: "+this.employee[i].getSalary());
-        }
 
         //Считаем максимальную зарплату
         public int getMaxSal(){
@@ -37,13 +35,27 @@ public class Company {
             }
             return (MaxSalary);
     }
+         //Геттер вакансии
+         public void getEmployee(int i) {
+             boolean f = this.employee[i].isEmpty();
+             if (f == true) {
+                 System.out.println("Вакансия свободна");
+             } else {
+                 System.out.println(this.name + ". Рабочее место #" + i + ": " + this.employee[i].name+" "+this.employee[i].surname+" как " + this.employee[i].getDesignation() + ". Зарплата: " + this.employee[i].getSalary());
+             }
+         }
 
         //Считаем среднюю зарплату
         public double getAvrSal() {
             int sum=0;
+            int count=0; //количество занятых рабочих мест
+            for(int i=0;i<this.employee.length;i++){if(this.employee[i].name!=null){count++;};}
+            System.out.println("Количество устроенных сотрудников в компании "+this.name+" составляет "+count);
             for(int i=0;i<this.employee.length;i++){
                 sum = sum + this.employee[i].salary;
             }
-          return (sum/(this.employee.length));
+          return (sum/count);
         };
+        //Сортируем массив по возрасту
+
     }
