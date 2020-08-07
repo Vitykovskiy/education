@@ -15,7 +15,7 @@ public class StartApplication {
         org.employee[1].createEmployee("Ivan","Antamanov",27,"man");
         org.employee[2].createEmployee("Jamal","Jamalovich",21,"man");
         org.employee[3].createEmployee("Jamal","Abdulovich",21,"man");
-        org.employee[4].createEmployee("Maria","Ivanova",34,"woman");
+        org.employee[4].createEmployee("Maria","Ivanova",45,"woman");
         org.employee[5].createEmployee("Elena","Gorbunova",29,"woman");
         org.employee[6].createEmployee("Tatyana","Kabachenko",60,"woman");
 
@@ -27,10 +27,11 @@ public class StartApplication {
         org.employee[4].setWorkplace(1150,"Стажер");
         org.employee[5].setWorkplace(1300,"Стажер");
         org.employee[6].setWorkplace(1700,"Стажер");
-
+       // org.getEmployees();
         //Выводим среднюю зарплату и максимальную зарплаты
-        System.out.println("Максимальная зарплата в компании "+org.name+" составляет "+org.getMaxSal());
-        System.out.println("Средняя зарплата в компании "+org.name+" составляет "+org.getAvrSal());
-        org.getEmployee(4);
+       // System.out.println("Максимальная зарплата в компании "+org.name+" составляет "+org.getMaxSal());
+      //  System.out.println("Средняя зарплата в компании "+org.name+" составляет "+org.getAvrSal());
+        org.sortSalary();
+        //org.getEmployees();
     }
 }

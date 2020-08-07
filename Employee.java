@@ -33,7 +33,7 @@ public class Employee {
     {
         this.salary = salary;
         this.designation=designation;
-        System.out.println(this.name+" "+this.surname+" имеет должность "+designation+" с зарплатой "+salary);
+        //System.out.println(this.name+" "+this.surname+" имеет должность "+designation+" с зарплатой "+salary);
     }
 
     //Геттеры зарплаты и должности
